@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html lang="es">
+    <meta charset="utf-8">
+        <!------------- TITULO DE LA PAGINA ---------------------->
+        <title>Tarea Evaluativa DWEC04</title>
+        <!---------llamada a css ------------->
+        <link rel="stylesheet" href="../css/estilos.min.css">
+        <!--------------- llamada a fuentes de texto --------------->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Quicksand&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+        <!-------------LAMADA SCRIPTS y CARGA JQUERY --------------------->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- CARGA LIBRERIA GRAFICA -->
+        <script type="text/javascript" src="../control/libraries/jquery_3_7_2.js"></script>
+        <script type="text/javascript" src="../control/js/don.js"></script>
+    </head>
+    <body>
+        <header>
+            <h1 id="titulo">El Tiempo en San Sebastian - Donosti</h1>
+            <article class="idiomas">
+                <input type="button" id="esp"  class="boton" value="ESP">
+                <input type="button" id="eus"  class="boton" value="EUS">
+            </article>
+            
+        </header>
+        
+        <section class="temp_capital">
+
+            <!-- Temp max y min -->
+            <article class="localId">
+                <h2 id="don">San - Sebastian</h2>
+                <ul id="ciudad">
+                    <h2>CARGANDO DATOS</h2>
+                    <!-- Esto se tiene que generar automaticamente -->
+                </ul>
+                <!-- prediccion en texto -->
+                <article id="prediccion_locId"  class="localId_text">
+                    <h2>CARGANDO DATOS</h2>
+                </article>
+            </article>
+            
+            <!-- grafica tendencia -->
+            <canvas id="tendencia_locId" class="grafica">
+                <h2>CARGANDO DATOS</h2>
+            </canvas>
+        </section>
+
+    </body>
+</html>

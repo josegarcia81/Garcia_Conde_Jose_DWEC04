@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html lang="es">
+    <meta charset="utf-8">
+        <!------------- TITULO DE LA PAGINA ---------------------->
+        <title>Tarea Evaluativa DWEC04</title>
+        <!---------llamada a css ------------->
+        <link rel="stylesheet" href="../css/estilos.min.css">
+        <!--------------- llamada a fuentes de texto --------------->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Quicksand&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+        <!-------------LAMADA SCRIPTS y CARGA JQUERY --------------------->
+        <script type="text/javascript" src="../control/libraries/jquery_3_7_2.js"></script>
+        <script type="text/javascript" src="../control/js/scripts_locations.js"></script>
+    </head>
+    <body>
+        <header>
+            <h1 id="titulo">El Tiempo en Euskal Herria</h1>
+            <article class="idiomas">
+                <input type="button" id="esp"  class="boton" value="ESP">
+                <input type="button" id="eus"  class="boton" value="EUS">
+            </article>
+            
+        </header>
+        
+        <section class="temp_capitales">
+            <article class="gasteiz">
+                <h2 id="vit">VITORIA</h2>
+                <ul id="gasteiz">
+                    <!-- Esto se tiene que generar automaticamente -->
+                    <img src="https://api.euskadi.eus/appcont/meteorologia/meteodat/images/12.png">
+                    <li>MAX: 13ºc</li>
+                    <li>MIN: 1ºc</li>
+                </ul>
+                <input type="button" id="pre_gasteiz" class="boton"  value="+info">
+            </article>
+            <article class="bilbo">
+                <h2 id="bil">BILBAO</h2>
+                <ul id="bilbo">
+                    <!-- Esto se tiene que generar automaticamente -->
+                    <img src="https://api.euskadi.eus/appcont/meteorologia/meteodat/images/12.png">
+                    <li>MAX: 13ºc</li>
+                    <li>MIN: 1ºc</li>
+                </ul>
+                <input type="button" id="pre_bilbo"  class="boton" value="+info">
+            </article>
+            <article class="donosti">
+                <h2 id="don">SAN SEBASTIAN</h2>
+                <ul id="donosti">
+                    <!-- Esto se tiene que generar automaticamente -->
+                    <img src="https://api.euskadi.eus/appcont/meteorologia/meteodat/images/12.png">
+                    <li>MAX: 13ºc</li>
+                    <li>MIN: 1ºc</li>
+                </ul>
+                <input type="button" id="pre_donosti"  class="boton" value="+info">
+            </article>
+        </section>
+        <section class="prediccion_general">
+            <h2 id="prediccion_euskadi">Predicción para el día de hoy en Euskadi:</h2>
+            <article id="prediccion_hoy">
+
+            </article>
+        </section>
+
+    </body>
+</html>
