@@ -2,7 +2,7 @@
 
 $(document).ready(function(){
 
-    // VARIABLES PETICIONES //
+        // VARIABLES PETICIONES //
     var url = "https://api.euskadi.eus/";
     var token = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJtZXQwMS5hcGlrZXkiLCJpc3MiOiJKb3NlIE1hcmlhIEdhcmNpYSBDb25kZSBCSVJUTEgiLCJleHAiOjE4OTUxNDkyMDAsInZlcnNpb24iOiIxLjAuMCIsImlhdCI6MTcwNTc2MDQwMCwiZW1haWwiOiJtaWtpcGlraTgxQGdtYWlsLmNvbSJ9.KPgd8J-5ranETbnve1yBROoNjo03Q2HxlaiyGhLsnLV3sPky5M2gG7eiOK0eP2zsqETBO7ZFYGb5WbxyGOhRJwUoiLgHN2Ms6_eUl89JJegnZC3w3EPR36OLGXen6TE1Kuzg1tnUuR5bDKh-edwf_4zwg7XsDBFsc4sFcmzMyVcV6sDnZfThfT--_6pJTa4PdRCOIzHjreQv5k6wWGTRt_YCM2Pa3aEMYkFviZZ_977wyv4GeTPnsM9zxZzr-3qLdXAAP1yMQ_Z2s6oo1PGqiDCRZYemXB9QQHrEVnRPlv1Yz7_OIWleWChWA8BrMtLE01KkklZLbHRh7ivsKoDHYA";
         // VARIABLES REGION ZONA LOCALIZACION // 
@@ -12,14 +12,36 @@ $(document).ready(function(){
         // VARIABLE PARA ARRAY TEMP. GRAFICA //
     var data_trend = [];
     var grafica = $("#tendencia_locId").get(0).getContext('2d');
-
-    // VARIABLES BOTONES IDIOMA //
+        // VARIABLES BOTONES IDIOMA //
     var boton_esp = $("#esp")
     var boton_eus = $("#eus")
-    // VARIABLE CAROUSEL //
+        // VARIABLE CAROUSEL //
     var carousel = $("#carousel")
-
-    // VARIABLES PARA OBTENER LA FECHA ACTUAL //
+    var array_horas = ["00:00",
+                        "01:00",
+                        "02:00",
+                        "03:00",
+                        "04:00",
+                        "05:00",
+                        "06:00",
+                        "07:00",
+                        "08:00",
+                        "09:00",
+                        "10:00",
+                        "11:00",
+                        "12:00",
+                        "13:00",
+                        "14:00",
+                        "15:00",
+                        "16:00",
+                        "17:00",
+                        "18:00",
+                        "19:00",
+                        "20:00",
+                        "21:00",
+                        "22:00",
+                        "23:00"]
+        // VARIABLES PARA OBTENER LA FECHA ACTUAL //
     var fecha = new Date();
     var anio = (fecha.getFullYear()).toString();
     var mes = (fecha.getMonth()+1).toString();
@@ -43,6 +65,11 @@ $(document).ready(function(){
 
     fecha_dia_sig = anio + "" + mes + "" + dia_sig;
     
+    // BOTON INICIO //
+    $("#ini").click(function(){
+        window.open("index.html", "_self")
+    })
+    
     // Peticion ajax para el tiempo local //
     $.ajax({
         type: "GET",
@@ -52,9 +79,9 @@ $(document).ready(function(){
         success: function(response){
             console.log(response)
             // escribir datos en los contenedores //
-            $('#ciudad').html('<li>Temperatura actual: ' + response.temperature.value + '</li><br>'
-                            +'<li>Max: ' + response.temperatureRange.max + '</li>'
-                            +'<li>Min: ' + response.temperatureRange.min+'</li>')
+            $('#ciudad').html('<li>Temperatura actual: ' + response.temperature.value + ' ºC</li><br>'
+                            +'<li>Max: ' + response.temperatureRange.max + ' ºC</li>'
+                            +'<li>Min: ' + response.temperatureRange.min+' ºC</li>')
             $('#prediccion_locId').html("<p>"+response.forecastText.SPANISH+"</p>")
             
             // PREVISIÓN IDIOMAS //
@@ -127,7 +154,7 @@ $(document).ready(function(){
             var chart = new Chart(grafica,{
                 type:"line",
                 data:{
-                    labels:["00.00",
+                    labels:["00:00",
                             "01:00",
                             "02:00",
                             "03:00",
@@ -172,51 +199,57 @@ $(document).ready(function(){
                     }
                 }
             })
-        
+            // VARIABLE PARA LA OBTENCION DE LOS DATOS DEL CARRUSEL //
             var listado_pred = ordered_data.map(function(element){
-                return [element.symbolSet.weather.nameByLang.SPANISH, element.symbolSet.weather.path]
+                return [element.symbolSet.weather.nameByLang.SPANISH, element.symbolSet.weather.path, element.range]
             })
-            console.log(listado_pred)
+            
+            console.log(listado_pred);
+            //console.log(array_horas);
+            // VARIABLE PARA EL CALCULO DE LAS HORAS //
+            var i = 0
+            // AÑADIENDO LOS DIV PARA EL CARROUSEL //
             listado_pred.map(function(element){
-                carousel.append("<div><img scr=\""+url+element[1]+"\" alt=\"imagen\"><p>"+element[0]+"</p></div>")//<img scr=\""+url+element[1]+"\" alt=\"imagen\">
-                console.log(url+element[1])
+                carousel.append("<div style=\"text-align: -webkit-center;\"><img src="+url+element[1]+" alt=\"imagen\" style=\"width: 5em;\"/><p style=\"height: 2em;\">"+element[0].toString()+"</p><p>"+array_horas[i]+"</p></div>")
+                //console.log(url+element[1])
+                i=i+1
             })
             // carrusel slick //
-            // $('.carousel').slick({
-            //     dots: true,
-            //     infinite: true,
-            //     speed: 300,
-            //     slidesToShow: 4,
-            //     slidesToScroll: 1,
-            //     responsive: [
-            //       {
-            //         breakpoint: 1024,
-            //         settings: {
-            //           slidesToShow: 3,
-            //           slidesToScroll: 3,
-            //           infinite: true,
-            //           dots: true
-            //         }
-            //       },
-            //       {
-            //         breakpoint: 600,
-            //         settings: {
-            //           slidesToShow: 2,
-            //           slidesToScroll: 2
-            //         }
-            //       },
-            //       {
-            //         breakpoint: 480,
-            //         settings: {
-            //           slidesToShow: 1,
-            //           slidesToScroll: 1
-            //         }
-            //       }
-            //       // You can unslick at a given breakpoint now by adding:
-            //       // settings: "unslick"
-            //       // instead of a settings object
-            //     ]
-            //   });
+            $('.carousel').slick({
+                dots: true,
+                infinite: true,
+                speed: 600,
+                slidesToShow: 6,// 6 IMAGENES
+                slidesToScroll: 6,
+                responsive: [
+                  {
+                    breakpoint: 1024,
+                    settings: {
+                      slidesToShow: 3,
+                      slidesToScroll: 3,
+                      infinite: true,
+                      dots: true
+                    }
+                  },
+                  {
+                    breakpoint: 600,
+                    settings: {
+                      slidesToShow: 2,
+                      slidesToScroll: 2
+                    }
+                  },
+                  {
+                    breakpoint: 480,
+                    settings: {
+                      slidesToShow: 1,
+                      slidesToScroll: 1
+                    }
+                  }
+                  // You can unslick at a given breakpoint now by adding:
+                  // settings: "unslick"
+                  // instead of a settings object
+                ]
+              });
 
         },
         error: function(error){
@@ -224,62 +257,5 @@ $(document).ready(function(){
             alert("Error en la carga de datos")
         }
     })
-
-    // https://api.euskadi.eus/euskalmet/weather/regions/basque_country/zones/great_bilbao/locations/bilbao/forecast/trends/measures/at/2024/02/16/for/20240217
-    // $("#carousel").slick();
-
-    // $.ajax({
-    //     type: "GET",
-    //     url : url+"euskalmet/weather/regions/"+regionId+"/zones/"+zoneId+"/locations/"+locId+"/forecast/trends/measures/at/"+anio+"/"+mes+"/"+dia+"/for/"+fecha_dia_sig+"",
-    //         // htt/euskalmet/weather/regions/basque_country/zones/great_bilbao/locations/bilbao/forecast/trends/measures/at/2024/02/16/for/20240217
-    //     ///euskalmet/weather/regions/{regionId}/zones/{zoneId}/locations/{locId}/forecast/trends/measures/at/{YYYY}/{MM}/{DD}/for/{YYYYMMDD}
-    //     headers: {'Authorization':'Bearer '+token+''},
-    //     dataType: "json",
-    //     success: function(response){
-    //         // VISUALIZAR DATOS //
-    //         console.log(response)
-    //         // RECOGER DATOS UTILES EN VARIABLE //
-    //         data_trend = response.trends.set;
-    //         console.log(data_trend);
-
-    //         // ORDENAR DATOS POR HORAS PARA CREAR LA GRAFICA //
-    //         var mapped_data = data_trend.map(function(element,i){
-    //             return {index : i, value : element.range}
-    //         })
-
-    //         mapped_data.sort(function (a,b){
-    //             if (a.value > b.value) {
-    //                 return 1;
-    //             }
-    //             if (a.value < b.value) {
-    //                 return -1;
-    //             }
-    //             return 0;
-    //         })
-
-    //         var ordered_data = mapped_data.map(function(element){
-    //             return data_trend[element.index]
-    //         })
-    //         console.log(ordered_data)
-    //         //console.log(ordered_data[0].temperature.value)
-
-    //         var listado_temp = ordered_data.map(function(element){
-    //             return element.temperature.value
-    //         })
-    //         console.log(listado_temp)
-
-    //         var listado = JSON.stringify(listado_temp)
-    //         // obtener calculo del max valos del array //
-    //         var max = Math.max(...listado_temp)
-    //         console.log(listado)
-    //         console.log(max)
-        
-            
-
-    //     },
-    //     error: function(error){
-    //         console.log(error)
-    //         alert("Error en la carga de datos")
-    //     }
-    // })
+    
 })

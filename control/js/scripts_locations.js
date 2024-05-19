@@ -35,13 +35,7 @@ $(document).ready(function(){
             dia_sig = '0' + este_dia_sig;
         }
     }
-    // console.log(mes);
-    // console.log(anio + " " + mes + " " + dia);
-    // console.log(anio + "" + mes + "" + dia);
-
     fecha_dia_sig = anio + "" + mes + "" + dia_sig;
-
-    
     
     // Petion ajax a el servidor API Rest de Euskalmet prediccion general //
     $.ajax({
@@ -53,12 +47,12 @@ $(document).ready(function(){
             console.log(response)
             // console.log(response.citiesTemperatureRange[4].temperature.max)
             // console.log(response.citiesTemperatureRange[4].temperature.min)
-            $('#gasteiz').html('<li>Max: ' + response.citiesTemperatureRange[4].temperature.max+'</li>'
-                                +'<li>Min: ' + response.citiesTemperatureRange[4].temperature.min+'</li>')
-            $('#donosti').html('<li>Max: ' + response.citiesTemperatureRange[5].temperature.max+'</li>'
-                                +'<li>Min: ' + response.citiesTemperatureRange[5].temperature.min+'</li>')
-            $('#bilbo').html('<li>Max: ' + response.citiesTemperatureRange[0].temperature.max+'</li>'
-                                +'<li>Min: ' + response.citiesTemperatureRange[0].temperature.min+'</li>')
+            $('#gasteiz').html('<li>Max: ' + response.citiesTemperatureRange[4].temperature.max+' ºC</li>'
+                                +'<li>Min: ' + response.citiesTemperatureRange[4].temperature.min+' ºC</li>')
+            $('#donosti').html('<li>Max: ' + response.citiesTemperatureRange[5].temperature.max+' ºC</li>'
+                                +'<li>Min: ' + response.citiesTemperatureRange[5].temperature.min+' ºC</li>')
+            $('#bilbo').html('<li>Max: ' + response.citiesTemperatureRange[0].temperature.max+' ºC</li>'
+                                +'<li>Min: ' + response.citiesTemperatureRange[0].temperature.min+' ºC</li>')
             $('#prediccion_hoy').html("<p>"+response.forecastTextByLang.SPANISH+"</p>")
             // console.log(typeof(response.forecastTextByLang.SPANISH))
 
@@ -88,13 +82,13 @@ $(document).ready(function(){
     })
 
     boton_vit.click(function(){
-        window.open("../../view/gasteiz.html", "_self")
+        window.open("gasteiz.html", "_self")
     })  
     boton_bil.click(function(){
-        window.open("../../view/bilbo.html", "_self")
+        window.open("bilbo.html", "_self")
     })
     boton_don.click(function(){
-        window.open("../../view/donosti.html", "_self")
+        window.open("donosti.html", "_self")
     })
 
 })

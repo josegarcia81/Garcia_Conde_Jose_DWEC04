@@ -9,13 +9,11 @@
         <!-- carrusel -->
         <link rel="stylesheet" href="../control/libraries/carousel/slick/slick.css">
         <link rel="stylesheet" href="../control/libraries/carousel/slick/slick-theme.css">
-
         <!--------------- llamada a fuentes de texto --------------->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Quicksand&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-        
         <!-------------LAMADA SCRIPTS y CARGA JQUERY --------------------->
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- CARGA LIBRERIA GRAFICA -->
         <script type="text/javascript" src="../control/libraries/jquery_3_7_2.js"></script>
@@ -29,7 +27,7 @@
                 <input type="button" id="esp"  class="boton" value="ESP">
                 <input type="button" id="eus"  class="boton" value="EUS">
             </article>
-            
+            <input type="button" id="ini"  class="boton" value="INICO">
         </header>
         
         <section class="temp_capital">
@@ -52,11 +50,13 @@
                 <h2>CARGANDO DATOS</h2>
             </canvas>
         </section>
-        <div id="carousel" class="carousel">
-            <!-- Generar automaticamente -->
-        </div>
-            
-        <script type="text/javascript" src="../control/libraries/carousel/slick/slick.js"></script>
+        <section class="prevision_horas" style="text-align: center;">
+            <h2>Previsión por horas</h2>
+            <div id="carousel" class="carousel" style="width: 600px;text-align: -webkit-center;">
+                <!-- Generar automaticamente -->
+            </div>
+        </section>    
+        <!-- LLAMADA A LIBRERIA SLICK -->
         <script type="text/javascript" src="../control/libraries/carousel/slick/slick.min.js"></script>
     </body>
 </html>

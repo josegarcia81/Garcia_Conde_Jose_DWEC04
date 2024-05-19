@@ -6,6 +6,9 @@
         <title>Tarea Evaluativa DWEC04</title>
         <!---------llamada a css ------------->
         <link rel="stylesheet" href="../css/estilos.min.css">
+        <!-- carrusel -->
+        <link rel="stylesheet" href="../control/libraries/carousel/slick/slick.css">
+        <link rel="stylesheet" href="../control/libraries/carousel/slick/slick-theme.css">
         <!--------------- llamada a fuentes de texto --------------->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,7 +26,7 @@
                 <input type="button" id="esp"  class="boton" value="ESP">
                 <input type="button" id="eus"  class="boton" value="EUS">
             </article>
-            
+            <input type="button" id="ini"  class="boton" value="INICO">
         </header>
         
         <section class="temp_capital">
@@ -46,6 +49,13 @@
                 <h2>CARGANDO DATOS</h2>
             </canvas>
         </section>
-
+        <section class="prevision_horas" style="text-align: center;">
+            <h2>Previsión por horas</h2>
+            <div id="carousel" class="carousel" style="width: 600px;text-align: -webkit-center;">
+                <!-- Generar automaticamente -->
+            </div>
+        </section>
+        <!-- LLAMADA A LIBRERIA SLICK -->
+        <script type="text/javascript" src="../control/libraries/carousel/slick/slick.min.js"></script>
     </body>
 </html>
