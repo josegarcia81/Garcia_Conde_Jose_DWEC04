@@ -73,15 +73,15 @@ $(document).ready(function(){
     // Peticion ajax para el tiempo local //
     $.ajax({
         type: "GET",
-        url : url+"euskalmet/weather/regions/"+regionId+"/zones/"+zoneId+"/locations/"+locId+"/forecast/at/"+anio+"/"+mes+"/"+dia+"/for/"+(fecha_dia_sig-1)+"",
+        url : url+"euskalmet/weather/regions/"+regionId+"/zones/"+zoneId+"/locations/"+locId+"/forecast/at/"+anio+"/"+mes+"/"+dia+"/for/"+anio+mes+dia+"",
         headers: {'Authorization':'Bearer '+token+''},
         dataType: "json",
         success: function(response){
             console.log(response)
             // escribir datos en los contenedores //
-            $('#ciudad').html('<li>Temperatura actual: ' + response.temperature.value + ' ºC</li><br>'
-                            +'<li>Max: ' + response.temperatureRange.max + ' ºC</li>'
-                            +'<li>Min: ' + response.temperatureRange.min+' ºC</li>')
+            $('#ciudad').html('<li>Temperatura actual: ' +  response.temperature.value + ' ºC</li><br>'
+                            +'<li>Max: ' + Math.round(response.temperatureRange.max) + ' ºC</li>'
+                            +'<li>Min: ' + Math.round(response.temperatureRange.min) +' ºC</li>')
             $('#prediccion_locId').html("<p>"+response.forecastText.SPANISH+"</p>")
             
             // PREVISIÓN IDIOMAS //
@@ -109,7 +109,7 @@ $(document).ready(function(){
     // PETICION PARA GRAFICA //
     $.ajax({
         type: "GET",
-        url : url+"euskalmet/weather/regions/"+regionId+"/zones/"+zoneId+"/locations/"+locId+"/forecast/trends/measures/at/"+anio+"/"+mes+"/"+dia+"/for/"+(fecha_dia_sig-1)+"",
+        url : url+"euskalmet/weather/regions/"+regionId+"/zones/"+zoneId+"/locations/"+locId+"/forecast/trends/measures/at/"+anio+"/"+mes+"/"+dia+"/for/"+anio+mes+dia+"",
         headers: {'Authorization':'Bearer '+token+''},
         dataType: "json",
         success: function(response){

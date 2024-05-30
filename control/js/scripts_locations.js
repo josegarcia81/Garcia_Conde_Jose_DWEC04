@@ -40,19 +40,19 @@ $(document).ready(function(){
     // Petion ajax a el servidor API Rest de Euskalmet prediccion general //
     $.ajax({
         type: "GET",
-        url : url+"euskalmet/weather/regions/"+regionId+"/forecast/at/"+anio+"/"+mes+"/"+dia+"/for/"+fecha_dia_sig+"",
+        url : url+"euskalmet/weather/regions/"+regionId+"/forecast/at/"+anio+"/"+mes+"/"+dia+"/for/"+anio+mes+dia+"",
         headers: {'Authorization':'Bearer '+token+''},
         dataType: "json",
         success: function(response){
             console.log(response)
             // console.log(response.citiesTemperatureRange[4].temperature.max)
             // console.log(response.citiesTemperatureRange[4].temperature.min)
-            $('#gasteiz').html('<li>Max: ' + response.citiesTemperatureRange[4].temperature.max+' ºC</li>'
+            $('#gasteiz').html('<li>Max: ' + response.citiesTemperatureRange[2].temperature.max+' ºC</li>'
+                                +'<li>Min: ' + response.citiesTemperatureRange[2].temperature.min+' ºC</li>')
+            $('#donosti').html('<li>Max: ' + response.citiesTemperatureRange[1].temperature.max+' ºC</li>'
+                                +'<li>Min: ' + response.citiesTemperatureRange[1].temperature.min+' ºC</li>')
+            $('#bilbo').html('<li>Max: ' + response.citiesTemperatureRange[4].temperature.max+' ºC</li>'
                                 +'<li>Min: ' + response.citiesTemperatureRange[4].temperature.min+' ºC</li>')
-            $('#donosti').html('<li>Max: ' + response.citiesTemperatureRange[5].temperature.max+' ºC</li>'
-                                +'<li>Min: ' + response.citiesTemperatureRange[5].temperature.min+' ºC</li>')
-            $('#bilbo').html('<li>Max: ' + response.citiesTemperatureRange[0].temperature.max+' ºC</li>'
-                                +'<li>Min: ' + response.citiesTemperatureRange[0].temperature.min+' ºC</li>')
             $('#prediccion_hoy').html("<p>"+response.forecastTextByLang.SPANISH+"</p>")
             // console.log(typeof(response.forecastTextByLang.SPANISH))
 
