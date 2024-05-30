@@ -47,11 +47,14 @@ $(document).ready(function(){
             console.log(response)
             // console.log(response.citiesTemperatureRange[4].temperature.max)
             // console.log(response.citiesTemperatureRange[4].temperature.min)
-            $('#gasteiz').html('<li>Max: ' + response.citiesTemperatureRange[2].temperature.max+' ºC</li>'
+            $('#gasteiz').html('<li><img src="' + url+response.maps[0].mapSymbols[15].path+'"/></li>'
+                                +'<li>Max: ' + response.citiesTemperatureRange[2].temperature.max+' ºC</li>'
                                 +'<li>Min: ' + response.citiesTemperatureRange[2].temperature.min+' ºC</li>')
-            $('#donosti').html('<li>Max: ' + response.citiesTemperatureRange[1].temperature.max+' ºC</li>'
+            $('#donosti').html('<li><img src="' + url+response.maps[0].mapSymbols[8].path+'"/></li>'
+                                +'<li>Max: ' + response.citiesTemperatureRange[1].temperature.max+' ºC</li>'
                                 +'<li>Min: ' + response.citiesTemperatureRange[1].temperature.min+' ºC</li>')
-            $('#bilbo').html('<li>Max: ' + response.citiesTemperatureRange[4].temperature.max+' ºC</li>'
+            $('#bilbo').html('<li><img src="' + url+response.maps[0].mapSymbols[17].path+'"/></li>'
+                                +'<li>Max: ' + response.citiesTemperatureRange[4].temperature.max+' ºC</li>'
                                 +'<li>Min: ' + response.citiesTemperatureRange[4].temperature.min+' ºC</li>')
             $('#prediccion_hoy').html("<p>"+response.forecastTextByLang.SPANISH+"</p>")
             // console.log(typeof(response.forecastTextByLang.SPANISH))
